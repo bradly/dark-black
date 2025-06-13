@@ -28,17 +28,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
         guard let button = statusItem?.button else { return }
-        button.image = NSImage(systemSymbolName: "moon.fill", accessibilityDescription: "Dark Black")
+        button.image = NSImage(systemSymbolName: "curtains.open", accessibilityDescription: "Curtains")
 
         let menu = NSMenu()
 
-        let toggleItem = NSMenuItem(title: "Enable Dark Mode", action: #selector(toggleDarkMode), keyEquivalent: "")
+        let toggleItem = NSMenuItem(title: "Draw Curtains", action: #selector(toggleDarkMode), keyEquivalent: "")
         toggleItem.target = self
         menu.addItem(toggleItem)
 
         menu.addItem(NSMenuItem.separator())
 
-        let quitItem = NSMenuItem(title: "Quit Dark Black", action: #selector(quitApp), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: "Quit Curtains", action: #selector(quitApp), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
 
@@ -50,10 +50,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if isDarkModeEnabled {
             createOverlay()
-            statusItem?.menu?.item(at: 0)?.title = "Disable Dark Mode"
+            statusItem?.menu?.item(at: 0)?.title = "Open Curtains"
+            statusItem?.button?.image = NSImage(systemSymbolName: "curtains.closed", accessibilityDescription: "Curtains Closed")
         } else {
             removeOverlay()
-            statusItem?.menu?.item(at: 0)?.title = "Enable Dark Mode"
+            statusItem?.menu?.item(at: 0)?.title = "Draw Curtains"
+            statusItem?.button?.image = NSImage(systemSymbolName: "curtains.open", accessibilityDescription: "Curtains Open")
         }
     }
     
@@ -78,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         overlayWindow?.ignoresMouseEvents = true
         overlayWindow?.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         
-        overlayWindow?.makeKeyAndOrderFront(nil)
+        overlayWindow?.orderFront(nil)
     }
     
     private func removeOverlay() {
