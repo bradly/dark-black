@@ -10,6 +10,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var popover: NSPopover?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        loadSettings()
         setupStatusBar()
         hideFromDock()
     }
@@ -20,6 +21,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    private func loadSettings() {
+        let storedDimAmount = UserDefaults.standard.double(forKey: "dimAmount")
+        if storedDimAmount > 0 {
+            dimAmount = CGFloat(storedDimAmount)
+        }
     }
     
     private func hideFromDock() {
@@ -86,6 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc private func sliderChanged(_ sender: NSSlider) {
         dimAmount = CGFloat(sender.doubleValue)
+        UserDefaults.standard.set(dimAmount, forKey: "dimAmount")
         if isDarkModeEnabled {
             updateOverlayOpacity()
         }

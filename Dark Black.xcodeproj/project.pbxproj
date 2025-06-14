@@ -10,22 +10,9 @@
 		22804F052DFCCEAF00804B1D /* Dark Black.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Black.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		22804F182DFCDD4B00804B1D /* Exceptions for "Dark Black" folder in "Dark Black" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Dark-Black-Info.plist",
-			);
-			target = 22804F042DFCCEAF00804B1D /* Dark Black */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		22804F072DFCCEAF00804B1D /* Dark Black */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				22804F182DFCDD4B00804B1D /* Exceptions for "Dark Black" folder in "Dark Black" target */,
-			);
 			path = "Dark Black";
 			sourceTree = "<group>";
 		};
@@ -267,6 +254,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dark-Black-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Curtains;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -275,6 +264,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bradlyfeeley.Dark-Black";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +285,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dark-Black-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Curtains;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -303,6 +295,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bradlyfeeley.Dark-Black";
 				PRODUCT_NAME = "$(TARGET_NAME)";
