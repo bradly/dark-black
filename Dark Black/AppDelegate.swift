@@ -4,7 +4,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var statusItem: NSStatusItem?
-    private var overlayWindow: NSWindow?
+    private var overlayWindows: [NSWindow] = []
     private var isDarkModeEnabled = false
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -38,6 +38,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         menu.addItem(NSMenuItem.separator())
 
+        let aboutItem = NSMenuItem(title: "About Curtains", action: #selector(showAbout), keyEquivalent: "")
+        aboutItem.target = self
+        menu.addItem(aboutItem)
+        
         let quitItem = NSMenuItem(title: "Quit Curtains", action: #selector(quitApp), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
@@ -58,33 +62,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem?.button?.image = NSImage(systemSymbolName: "curtains.open", accessibilityDescription: "Curtains Open")
         }
     }
+    @objc private func showAbout() {
+        let alert = NSAlert()
+        alert.messageText = "Curtains"
+        alert.informativeText = "Curtains is a screen dimming utility by Bradly Feeley."
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "Visit Website")
+        alert.addButton(withTitle: "OK")
+        
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            if let url = URL(string: "https://bradlyfeeley.com") {
+                NSWorkspace.shared.open(url)
+            }
+        }
+    }
     
     @objc private func quitApp() {
         NSApp.terminate(nil)
     }
     
     private func createOverlay() {
-        guard let screen = NSScreen.main else { return }
-        
-        overlayWindow = NSWindow(
-            contentRect: screen.frame,
-            styleMask: [.borderless],
-            backing: .buffered,
-            defer: false
-        )
-        
-        overlayWindow?.level = NSWindow.Level.screenSaver
-        overlayWindow?.backgroundColor = NSColor.black.withAlphaComponent(0.5)
-        overlayWindow?.isOpaque = false
-        overlayWindow?.hasShadow = false
-        overlayWindow?.ignoresMouseEvents = true
-        overlayWindow?.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
-        
-        overlayWindow?.orderFront(nil)
+        for screen in NSScreen.screens {
+            let window = NSWindow(
+                contentRect: screen.frame,
+                styleMask: [.borderless],
+                backing: .buffered,
+                defer: false
+            )
+            
+            window.level = NSWindow.Level.screenSaver
+            window.backgroundColor = NSColor.black.withAlphaComponent(0.5)
+            window.isOpaque = false
+            window.hasShadow = false
+            window.ignoresMouseEvents = true
+            window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+            
+            window.orderFront(nil)
+            overlayWindows.append(window)
+        }
     }
     
     private func removeOverlay() {
-        overlayWindow?.orderOut(nil)
-        overlayWindow = nil
+        for window in overlayWindows {
+            window.orderOut(nil)
+        }
+        overlayWindows.removeAll()
     }
 }
