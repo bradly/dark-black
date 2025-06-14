@@ -254,7 +254,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dark-Black-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Curtains;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dark Black";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -285,7 +285,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dark-Black-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Curtains;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dark Black";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

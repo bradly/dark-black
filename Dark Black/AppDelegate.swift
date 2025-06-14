@@ -38,11 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
         guard let button = statusItem?.button else { return }
-        button.image = NSImage(systemSymbolName: "curtains.open", accessibilityDescription: "Curtains")
+        button.image = NSImage(systemSymbolName: "rectangle.on.rectangle", accessibilityDescription: "Dark Black")
         
         let menu = NSMenu()
         
-        let toggleItem = NSMenuItem(title: "Draw Curtains", action: #selector(toggleDarkMode), keyEquivalent: "")
+        let toggleItem = NSMenuItem(title: "Enable Dark Black", action: #selector(toggleDarkMode), keyEquivalent: "")
         toggleItem.target = self
         menu.addItem(toggleItem)
         
@@ -52,11 +52,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.addItem(NSMenuItem.separator())
         
-        let aboutItem = NSMenuItem(title: "About Curtains", action: #selector(showAbout), keyEquivalent: "")
+        let aboutItem = NSMenuItem(title: "About Dark Black", action: #selector(showAbout), keyEquivalent: "")
         aboutItem.target = self
         menu.addItem(aboutItem)
         
-        let quitItem = NSMenuItem(title: "Quit Curtains", action: #selector(quitApp), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: "Quit Dark Black", action: #selector(quitApp), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
         
@@ -105,21 +105,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if isDarkModeEnabled {
             createOverlay()
-            statusItem?.menu?.item(at: 0)?.title = "Open Curtains"
-            statusItem?.button?.image = NSImage(systemSymbolName: "curtains.closed", accessibilityDescription: "Curtains Closed")
+            statusItem?.menu?.item(at: 0)?.title = "Disable Dark Black"
+            statusItem?.button?.image = NSImage(systemSymbolName: "rectangle.fill.on.rectangle.fill", accessibilityDescription: "Dark Black Enabled")
         } else {
             removeOverlay()
-            statusItem?.menu?.item(at: 0)?.title = "Draw Curtains"
-            statusItem?.button?.image = NSImage(systemSymbolName: "curtains.open", accessibilityDescription: "Curtains Open")
+            statusItem?.menu?.item(at: 0)?.title = "Enable Dark Black"
+            statusItem?.button?.image = NSImage(systemSymbolName: "rectangle.on.rectangle", accessibilityDescription: "Dark Black Disabled")
         }
     }
     
     @objc private func showAbout() {
         let alert = NSAlert()
-        alert.messageText = "Curtains"
-        alert.informativeText = "Curtains is a screen dimming utility by Bradly Feeley."
+        alert.messageText = "Dark Black"
+        alert.informativeText = "Dark Black is a screen dimming utility.\n\n Made by Bradly Feeley."
         alert.alertStyle = .informational
-        alert.addButton(withTitle: "Visit Website")
+        alert.addButton(withTitle: "Website")
         alert.addButton(withTitle: "OK")
         
         let response = alert.runModal()
